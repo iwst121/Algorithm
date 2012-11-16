@@ -49,6 +49,9 @@ class Sorter:
         else:
             return A
 
+    def heapSort(self,A):
+         
+
 if __name__=="__main__":
     import profile
     s=Sorter()
