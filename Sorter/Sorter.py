@@ -60,12 +60,12 @@ class Sorter:
             h.heapsize = h.heapsize - 1
             h.maxHeapify(h.heap,1)
             i = i-1
-        return h.heap
+        return h.heap[1:len(h.heap)]
 
 if __name__=="__main__":
     import profile
     s=Sorter()
-    l=s.largeRandomArray(10000)
+    l=s.largeRandomArray(100)
     print ("================PROFILE=================")
     print ("Insertion Sort:")
     profile.run("s.insertionSort(l)")
