@@ -45,8 +45,10 @@ class Heap:
 
     def Right(self,i):
         return i*2+1
+    
+    def getList(self):
+        return self.heap
 
 if __name__=="__main__":
     A=[4,1,3,2,16,9,10,14,8,7]
     H=Heap(A)
-    print H
