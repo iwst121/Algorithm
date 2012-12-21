@@ -18,7 +18,6 @@ class Heap:
     def maxHeapify(self,A,i):
         l = self.Left(i)
         r = self.Right(i)
-        #print "i:",i,"l:",l,"r:",r,"A[l]",A[l],"A[r]",A[r],"heapsize",self.heapsize
         if l <= self.heapsize and A[l] > A[i]:
             largest = l;
         else:

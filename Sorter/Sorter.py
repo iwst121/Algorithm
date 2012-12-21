@@ -65,7 +65,8 @@ class Sorter:
 if __name__=="__main__":
     import profile
     s=Sorter()
-    l=s.largeRandomArray(50000)
+    l=s.largeRandomArray(100)
+    print l
     print ("================PROFILE=================")
     print ("Insertion Sort:")
     profile.run("s.insertionSort(l)")
