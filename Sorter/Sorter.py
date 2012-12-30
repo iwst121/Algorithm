@@ -49,12 +49,28 @@ class Sorter:
         else:
             return A
 
+    def heapSort(self,A):
+        import Heap
+        h = Heap.Heap(A)
+        i = len(A)
+        while i >= 2:
+            j = h.heap[1]  
+            h.heap [1] = h.heap[i]
+            h.heap [i] = j
+            h.heapsize = h.heapsize - 1
+            h.maxHeapify(h.heap,1)
+            i = i-1
+        return h.heap[1:len(h.heap)]
+
 if __name__=="__main__":
     import profile
     s=Sorter()
-    l=s.largeRandomArray(10000)
+    l=s.largeRandomArray(100)
+    print l
     print ("================PROFILE=================")
     print ("Insertion Sort:")
     profile.run("s.insertionSort(l)")
     print ("Merge Sort:")
     profile.run("s.mergeSort(l)")
+    print ("Heap Sort:")
+    profile.run("s.heapSort(l)")
