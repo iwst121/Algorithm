@@ -20,6 +20,3 @@ class PQueue:
 if __name__=="__main__":
     A=[4,1,3,2,16,9,10,14,8,7]
     P=PQueue(A)
-    print P.maximum()
-    while P.heap.heapsize > 1:
-        print P.extractMax()
