@@ -58,7 +58,7 @@ class Sorter:
             h.heap [1] = h.heap[i]
             h.heap [i] = j
             h.heapsize = h.heapsize - 1
-            h.maxHeapify(h.heap,1)
+            h.maxHeapify(1)
             i = i-1
         return h.heap[1:len(h.heap)]
 

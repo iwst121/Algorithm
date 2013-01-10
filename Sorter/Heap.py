@@ -1,13 +1,24 @@
 import math
+import util
 
 class Heap:
+    """
+        This is a heap implementation using python.
+        One thing to notice here is for consistency with the CLRS book, the
+        heap here index form 1 instead of 0.
+    """
     def __init__(self,A):
         self._heapsize = len(A)
-        self._heap = self.expeandArray(A)
-        self.buildMaxHeap(self._heap)
+        self._heap = self.expandArray(A)
+        self.buildMaxHeap()
 
     def __str__(self):
         return str(self._heap[1:len(self._heap)])
+    
+    def __getItem__(self,i):
+        if i < 1 or i > self._heapsize:
+            raise Exception("Heap Index Error!")
+        return self._heap[i]
 
     @property
     def heapsize(self):
@@ -25,43 +36,48 @@ class Heap:
     
     @heap.setter
     def heap(self,A):
-        self._heap = self.expeandArray(A)
-        self.buildMaxHeap(self._heap)
+        self._heap = self.expandArray(A)
+        self.buildMaxHeap()
 
-    def buildMaxHeap(self,A):
-        i = int(math.floor(len(A)/2))
+    def buildMaxHeap(self):
+        i = int(math.floor(len(self._heap)/2))
         while(i >= 1):
-            self.maxHeapify(A,i)
+            self.maxHeapify(i)
             i-=1
 
-    def maxHeapify(self,A,i):
+    def maxHeapify(self,i):
         l = self.Left(i)
         r = self.Right(i)
-        if l <= self.heapsize and A[l] > A[i]:
+        if l <= self.heapsize and self._heap[l] > self._heap[i]:
             largest = l;
         else:
             largest = i;
-        if r <= self.heapsize and A[r] > A[largest]:
+        if r <= self.heapsize and self._heap[r] > self._heap[largest]:
             largest = r;
         if largest != i:
-            j = A[i]
-            A[i] = A[largest]
-            A[largest] = j
-            self.maxHeapify(A,largest) 
+            self._heap[i],self._heap[largest] = util.swap(self._heap[i],self._heap[largest])
+            self.maxHeapify(largest)
 
-    def expeandArray(self,A):
+    def expandArray(self,A):
         R=[0]
         for i in range(0,len(A)):
             R.append(A[i])
         return R
 
+    def _testIndex(self,i):
+        if i < 0 or i > self._heapsize:
+            raise Exception("Heap index error!")
+
     def Parent(self,i):
+        self._testIndex(i)
         return int(math.floor(i/2))
 
     def Left(self,i):
+        self._testIndex(i)
         return i*2
 
     def Right(self,i):
+        self._testIndex(i)
         return i*2+1
 
 if __name__=="__main__":
