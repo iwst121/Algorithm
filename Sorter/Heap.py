@@ -15,10 +15,16 @@ class Heap:
     def __str__(self):
         return str(self._heap[1:len(self._heap)])
     
-    def __getItem__(self,i):
-        if i < 1 or i > self._heapsize:
-            raise Exception("Heap Index Error!")
+    def __getitem__(self,i):
+        self._testIndex(i)  
         return self._heap[i]
+
+    def __setitem__(self,i,value):
+        """
+            This method may violate the heap's property, use it carefully.
+        """
+        self._testIndex(i)
+        self._heap[i] = value  
 
     @property
     def heapsize(self):
@@ -65,7 +71,7 @@ class Heap:
         return R
 
     def _testIndex(self,i):
-        if i < 0 or i > self._heapsize:
+        if i < 1 or i > self._heapsize:
             raise Exception("Heap index error!")
 
     def Parent(self,i):
