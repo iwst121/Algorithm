@@ -30,10 +30,7 @@ class PQueue:
             i = self._heap.Parent(i)
     
     def insert(self,key):
-        """
-            TODO: modify none here later if you find better approach.
-        """
-        self._heap.append(None)
+        self._heap.append(float("-inf"))
         self.increaseKey(self._heap.heapsize,key);
 
 if __name__=="__main__":
