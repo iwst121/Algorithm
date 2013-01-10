@@ -85,6 +85,13 @@ class Heap:
     def Right(self,i):
         self._testIndex(i)
         return i*2+1
+    
+    def append(self,val):
+        """
+            This may violate the heap property, use it carefully.
+        """
+        self._heapsize += 1
+        self._heap.append(val)
 
 if __name__=="__main__":
     A=[4,1,3,2,16,9,10,14,8,7]

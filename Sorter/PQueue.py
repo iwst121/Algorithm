@@ -30,7 +30,11 @@ class PQueue:
             i = self._heap.Parent(i)
     
     def insert(self,key):
-        pass
+        """
+            TODO: modify none here later if you find better approach.
+        """
+        self._heap.append(None)
+        self.increaseKey(self._heap.heapsize,key);
 
 if __name__=="__main__":
     A=[4,1,3,2,16,9,10,14,8,7]
@@ -38,4 +42,6 @@ if __name__=="__main__":
     print P
     print P.peekMax()
     P.increaseKey(2,100)
+    print P
+    P.insert(3)
     print P
