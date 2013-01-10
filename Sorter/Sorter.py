@@ -50,8 +50,8 @@ class Sorter:
             return A
 
     def heapSort(self,A):
-        import Heap
-        h = Heap.Heap(A)
+        from Heap import Heap
+        h = Heap(A)
         i = len(A)
         while i >= 2:
             j = h.heap[1]  

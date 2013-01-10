@@ -2,15 +2,34 @@ import math
 
 class Heap:
     def __init__(self,A):
-        self.heapsize = len(A)
-        self.heap = self.expeandArray(A)
-        self.buildMaxHeap(self.heap)
+        self._heapsize = len(A)
+        self._heap = self.expeandArray(A)
+        self.buildMaxHeap(self._heap)
 
     def __str__(self):
-        return str(self.heap[1:len(self.heap)])
+        return str(self._heap[1:len(self._heap)])
+
+    @property
+    def heapsize(self):
+        return self._heapsize;
+    
+    @heapsize.setter
+    def heapsize(self,value):
+        if valuse < 0:
+            raise Exception("Heapsize cannot be less then 0")
+        self._heapsize = value
+
+    @property
+    def heap(self):
+        return self._heap
+    
+    @heap.setter
+    def heap(self,A):
+        self._heap = self.expeandArray(A)
+        self.buildMaxHeap(self._heap)
 
     def buildMaxHeap(self,A):
-        i =int(math.floor(len(A)/2))
+        i = int(math.floor(len(A)/2))
         while(i >= 1):
             self.maxHeapify(A,i)
             i-=1
