@@ -2,7 +2,7 @@ from functools import total_ordering
 
 @total_ordering
 class Vertex:
-    def __init__(self,key,value):
+    def __init__(self,key,value = None):
         self.key = key
         self.value = value
 
