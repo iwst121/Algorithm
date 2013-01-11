@@ -3,38 +3,31 @@ from functools import total_ordering
 @total_ordering
 class Vertex:
     def __init__(self,key,value):
-        self._key = key
-        self._value = value
+        self.key = key
+        self.value = value
 
-    @property
-    def key(self):
-        return self._key
-
-    @key.setter
-    def key(self,newKey):
-        self._key = newKey
-
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self,newValue):
-        self.value = newValue
+    def __str__(self):
+        return "(Key: "+str(self.key)+",Value: "+str(self.value)+")"
+    
+    def __repr__(self):
+        return str(self)
 
     def _testConsistency(self,other):
         if type(self) != type(other):
             raise Exception("Need two vertexes here!")
 
+    def __hash__(self):
+        return self.key
+
     def __lt__(self,other):
         self._testConsistency(other)
-        if self.index <= other.index:
+        if self.key <= other.key:
             return True
         return False
     
     def __eq__(self,other):
         self._testConsistency(other)
-        if self.index == other.index:
+        if self.key == other.key:
             return True
         return False
         
