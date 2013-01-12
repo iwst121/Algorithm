@@ -14,6 +14,4 @@ class Queue:
         self.q.append(a)
 
     def dequeue(self):
-        if len(self.q) == 0:
-            return None
         return self.q.popleft()
