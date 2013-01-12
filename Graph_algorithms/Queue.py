@@ -6,6 +6,9 @@ class Queue:
 
     def __str__(self):
         return str(self.q)
+    
+    def __len__(self):
+        return len(self.q)
 
     def enqueue(self, a):
         self.q.append(a)
