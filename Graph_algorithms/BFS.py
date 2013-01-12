@@ -15,10 +15,8 @@ def BFS(G,s):
     distance[s] = 0
     parent[s] = None
     Q.enqueue(s)
-    while Q != []:
+    while len(Q) != 0:
         u = Q.dequeue()
-        if not u:
-            break
         for i in G.getAdjacencyVertexes(u):
             if color[i] == 0:
                 color[i] = 1
