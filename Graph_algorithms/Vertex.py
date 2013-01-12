@@ -2,7 +2,7 @@ from functools import total_ordering
 
 @total_ordering
 class Vertex:
-    def __init__(self,key,value):
+    def __init__(self,key,value = None):
         self.key = key
         self.value = value
 
@@ -17,7 +17,10 @@ class Vertex:
             raise Exception("Need two vertexes here!")
 
     def __hash__(self):
-        return self.key
+        if isinstance(self.key,int):
+            return self.key
+        elif isinstance(self.key,str) and len(self.key) == 1:
+            return ord(self.key)
 
     def __lt__(self,other):
         self._testConsistency(other)
