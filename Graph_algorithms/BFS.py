@@ -3,6 +3,9 @@ from Queue  import Queue
 from Vertex import Vertex
 
 def BFS(G,s):
+    """
+        Breadth First Search a Graph
+    """
     color = {}
     distance = {}
     parent = {}
