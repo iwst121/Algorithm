@@ -41,6 +41,12 @@ class Graph:
         if not self.directional:
             self.adjacencyList[vertex_b].append(vertex_a)
 
+    def getVertexes(self):
+        return self.adjacencyList.keys();
+    
+    def getAdjacencyVertexes(self,vertex):
+        return self.adjacencyList[vertex]
+    
 if __name__=="__main__":
     P=Graph()
     P.addEdge(Vertex(1),Vertex(2))
