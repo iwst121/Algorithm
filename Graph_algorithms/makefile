@@ -1,3 +1,3 @@
 test: *.py
 	python Graph.py
-	python BFS.py
+	python search_algorithms.py
