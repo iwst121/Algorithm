@@ -17,10 +17,7 @@ class Vertex:
             raise Exception("Need two vertexes here!")
 
     def __hash__(self):
-        if isinstance(self.key,int):
-            return self.key
-        elif isinstance(self.key,str) and len(self.key) == 1:
-            return ord(self.key)
+        return hash(self.key) 
 
     def __lt__(self,other):
         self._testConsistency(other)
