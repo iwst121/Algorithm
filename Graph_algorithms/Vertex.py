@@ -10,7 +10,7 @@ class Vertex:
         return "(Key: "+str(self.key)+",Value: "+str(self.value)+")"
     
     def __repr__(self):
-        return str(self)
+        return self.__str__() 
 
     def _testConsistency(self,other):
         if type(self) != type(other):
@@ -30,4 +30,3 @@ class Vertex:
         if self.key == other.key:
             return True
         return False
-        
