@@ -1,4 +1,5 @@
 from Vertex import Vertex
+import json
 
 class Graph:
     
@@ -6,14 +7,18 @@ class Graph:
         self.adjacencyList = {}
         self.directional = directional
         self.simple = simple
-        if not Filename:
+        if Filename:
             self._readFile(Filename)
 
     def _readFile(self,Filename):
-        """
-            This is going to be implemented later
-        """
-        pass
+        from GraphParser import GraphParser
+        parser = GraphParser(Filename)
+        self.simple = parser.isSimple()
+        self.directional = parser.isDirectional()
+        self.adjacencyList = parser.getAdjacencyList()
+
+    def __repr__(self):
+        return self.__str__()
 
     def __str__(self):
         simple = "Simple: "+ str(self.simple)+"\n"
@@ -48,7 +53,5 @@ class Graph:
         return self.adjacencyList[vertex]
     
 if __name__=="__main__":
-    P=Graph()
-    P.addEdge(Vertex(1),Vertex(2))
-    P.addEdge(Vertex(1),Vertex(3))
-    print P
+    P=Graph(Filename="graph.xml")
+    print P.__repr__() 

@@ -1,6 +1,10 @@
 from collections import deque
 
 class Queue:
+    """
+        This class wraps the system defined deque to make it behaves like a
+        queue.
+    """
     def __init__(self,a):
         self.q = deque(a)
 
@@ -14,6 +18,4 @@ class Queue:
         self.q.append(a)
 
     def dequeue(self):
-        if len(self.q) == 0:
-            return None
         return self.q.popleft()
