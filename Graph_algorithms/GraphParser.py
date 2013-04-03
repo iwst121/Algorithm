@@ -32,7 +32,7 @@ class GraphParser:
         try:
             simple = eval(self.graphroot.find(prop).text)
             if type(simple) != types.BooleanType:
-                raise Exception("Simple information is not provided correctly!")
+                raise Exception("Information is not provided correctly!")
             else:
                 return simple
         except AttributeError:
@@ -48,15 +48,17 @@ class GraphParser:
     def _lookup(self,key):
         if Vertex(key) in self.getNodes():
             return self.getNodes()[self.getNodes().index(Vertex(key))]
+        else:
+            return Vertex(key)
 
     def getAdjacencyList(self):
         """
         This is not finished for now
         """
         adjacencyList = {}
-        for vertex in self.getNodes():
-            nodes = json.loads(self.graphroot.find(".//node[@key=\""+str(vertex.key)+"\"]")[0].text)
-            adjacencyList[vertex] = map(self._lookup,nodes)
+        for vertex in self.graphroot.findall("node"):
+            nodes = [v.attrib["node"] for v in vertex.findall("edge")]
+            adjacencyList[self._lookup(vertex.attrib["key"])] = map(self._lookup,nodes)
         return adjacencyList
 
 if __name__=="__main__":
